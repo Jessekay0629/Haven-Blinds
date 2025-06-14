@@ -163,3 +163,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
+
+/////////////////////////////////////////////////////////////////////////
+// Handle thumbnail clicks
+        const thumbnails = document.querySelectorAll('.thumbnail-container');
+        const mainImage = document.getElementById('mainImage');
+        
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                // Remove active class from all thumbnails
+                thumbnails.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked thumbnail
+                thumbnail.classList.add('active');
+                
+                // Update main image
+                const newImageSrc = thumbnail.dataset.image;
+                mainImage.src = newImageSrc;
+            });
+        });

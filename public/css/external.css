@@ -703,6 +703,10 @@ body {
             margin: 0;
         }
 
+        .frosting-and-branding {
+            margin-bottom: 60px;
+        }
+
         .product-title {
             font-size: 1.6rem;
             font-weight: 650;
@@ -752,7 +756,7 @@ body {
         }
 
         .features-list li {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #666;
             margin-bottom: 15px;
             line-height: 1.5;
@@ -854,7 +858,7 @@ body {
             text-align: left;
         }
 
-        .cta-text {
+        .cta-text-1 {
             font-size: 1rem;
             color: #666;
             margin-bottom: 8px;
@@ -872,13 +876,13 @@ body {
             text-decoration: underline;
         }
 
-        .warranty-info {
+        .warranty-info-1 {
             font-size: 1rem;
             color: #666;
             margin: 20px 0 30px 0;
         }
 
-        .warranty-link {
+        .warranty-link-1 {
             color: #1291A8;
             text-decoration: none;
             font-weight: 600;
