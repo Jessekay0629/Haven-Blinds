@@ -3,41 +3,42 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 
 router.post('/send-email', (req, res) => {
-  const { name, email, message } = req.body;
+  const { firstName, lastName, email, phone, message } = req.body;
+  const fullName = `${firstName} ${lastName}`;
 
   // Create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
-    service: 'gmail', 
+    service: 'gmail',
     auth: {
-      user: 'contactform.toplife@gmail.com',  // Your new email
-      pass: 'rrva dmxp nmzu jphu'  // The app password you generated
+      user: 'contactform.toplife@gmail.com',  // Your form email
+      pass: 'rrva dmxp nmzu jphu'             // App password (never share publicly)
     }
   });
-  
+
   const mailOptions = {
-    from: `"${name}" <contactform.toplife@gmail.com>`,  // Use your form email as sender
-    replyTo: `"${name}" <${email}>`,  // Set the reply-to as the user's email
-    to: "jessekayombo09@gmail.com", // Client's email
-    subject: `Website Contact Form Submission from ${name}`,  // Include name in subject
-    messageId: `<form-${Date.now()}-${Math.random().toString(36).substring(2, 15)}@yourdomain.com>`, // Unique message ID
+    from: `"${fullName}" <contactform.toplife@gmail.com>`,
+    replyTo: `"${fullName}" <${email}>`,
+    to: "jessekayombo09@gmail.com",  // Where you want to receive the emails
+    subject: `Website Contact Form Submission from ${fullName}`,
+    messageId: `<form-${Date.now()}-${Math.random().toString(36).substring(2, 15)}@yourdomain.com>`,
     headers: {
-      'X-Entity-Ref-ID': `${Date.now()}-${Math.random().toString(36).substring(2, 15)}`, // Unique reference ID
+      'X-Entity-Ref-ID': `${Date.now()}-${Math.random().toString(36).substring(2, 15)}`
     },
-    text: `You have received a new message from ${name} (${email}):\n\n${message}`,
-    html: `<p><strong>Name:</strong> ${name}</p>
-           <p><strong>Email:</strong> ${email}</p>
-           <p><strong>Message:</strong> ${message}</p>`, // Format for better readability
+    text: `You have received a new message from ${fullName} (${email}):\n\nPhone: ${phone}\n\nMessage:\n${message}`,
+    html: `
+      <p><strong>Name:</strong> ${fullName}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Message:</strong><br>${message}</p>
+    `
   };
-  
-  
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return res.status(500).json({ success: false, message: 'Error in sending email', error });
     }
     res.status(200).json({ success: true, message: 'Email sent successfully!' });
-  });  
-  
+  });
 });
 
 module.exports = router;
