@@ -351,6 +351,11 @@ body {
         height: 60px;
     }
 
+        .header .container {
+    padding: 0 30px;
+    }
+
+
     .why-us-image {
         padding: 0 15px;
         margin-top: 30px;
