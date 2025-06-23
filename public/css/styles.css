@@ -792,7 +792,7 @@ body {
 
 .logo-container {
     display: flex;
-    animation: scroll 30s linear infinite;
+    animation: scroll 37s linear infinite;
     width: fit-content;
 }
 
