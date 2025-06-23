@@ -93,7 +93,7 @@
                         </div>
                     </li>
                     <li><a href="/FAQ">FAQ</a></li>
-                    <li><a href="/projects" class="active">Projects</a></li>
+                    <li><a href="/projects" class="active">Gallery</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>
@@ -117,6 +117,27 @@
 </section>
 
 <!--Project Section -->
+<section class="gallery-section">
+        <div class="gallery-header">
+            <h2>Our Past <span>Works</span></h2>
+            <p>Explore our portfolio of successful projects and creative solutions that have helped our clients achieve their goals.</p>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="roller">Roller blinds</button>
+            <button class="filter-btn" data-filter="vertical">Vertical blinds</button>
+            <button class="filter-btn" data-filter="wooden">Wooden blinds</button>
+            <button class="filter-btn" data-filter="alum">Aluminium blinds</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery">
+            <!-- Gallery items will be populated by JavaScript -->
+        </div>
+
+        <button class="load-more-btn" id="loadMore">Load More Projects</button>
+</section>
+
 
 <!-- Footer Section -->
     <footer class="footer--main">
@@ -214,6 +235,7 @@
 <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
     <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
         <script>
           var wa_btnSetting = {"btnColor":"#1291A8","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"260765003880","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
