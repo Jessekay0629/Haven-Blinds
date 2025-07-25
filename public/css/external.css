@@ -2397,7 +2397,7 @@ body {
 @keyframes l3 {to{transform: rotate(1turn)}}
 
 /* Gallery section styles ******************************************************************************/
-.gallery-section {
+        .gallery-section {
             max-width: 1200px;
             margin: 0 auto;
             padding: 5rem 2rem;
