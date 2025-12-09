@@ -41,6 +41,9 @@
         </div>
     </div>
 
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -49,27 +52,31 @@
                     <img src="assets/Logo_transparent.png" alt="Haven Blinds Logo">
                 </a>
             </div>
-            <button class="mobile-menu-btn">
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <nav class="main-nav">
+
+            <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about us">About us</a></li>
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/about-us">About us</a></li>
                     <li class="dropdown">
-                        <a href="#">Products <i class="fas fa-chevron-down"></i></a>
-                        
+                        <a href="#">
+                            Products <i class="fas fa-caret-down"></i>
+                        </a>
                         <div class="dropdown-menu">
                             <ul>
-                                <li><a href="/Aluminium Venetian Blinds">Aluminium Venetian Blinds</a></li>
-                                <li><a href="/Wooden Venetian Blinds">Wooden Venetian Blinds</a></li>
-                                <li><a href="/Vertical Blinds" class="active">Vertical Blinds</a></li>
-                                <li><a href="/Roller Blinds">Roller Blinds</a></li>
-                                <li>
-                                    <a href="#">Branding <i class="fas fa-caret-right"></i></a>
-                                    
+                                <li><a href="/aluminium-venetian-blinds.html">Aluminium Venetian Blinds</a></li>
+                                <li><a href="/wooden-venetian-blinds">Wooden Venetian Blinds</a></li>
+                                <li><a href="/vertical-blinds">Vertical Blinds</a></li>
+                                <li><a href="/roller-blinds">Roller Blinds</a></li>
+                                <li class="dropdown">
+                                    <a href="#">
+                                        Branding <i class="fas fa-caret-right"></i>
+                                    </a>
                                     <div class="dropdown-menu-1">
                                         <ul>
                                             <li><a href="/frosting">Frosting</a></li>
@@ -78,16 +85,18 @@
                                     </div>
                                 </li>
                                 <li><a href="/wooden-floor-tiles">Wooden Floor Tiles</a></li>
-                                <li><a href="/carpet tiles">Carpet Tiles</a></li>
+                                <li><a href="/carpet-tiles">Carpet Tiles</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                        <a href="#">
+                            Services <i class="fas fa-caret-down"></i>
+                        </a>
                         <div class="dropdown-menu">
                             <ul>
-                                <li><a href="/servicing of blinds">Servicing of Blinds</a></li>
-                                <li><a href="/cleaning of blinds">Cleaning of Blinds</a></li>
+                                <li><a href="/servicing-of-blinds">Servicing of Blinds</a></li>
+                                <li><a href="/cleaning-of-blinds">Cleaning of Blinds</a></li>
                                 <li><a href="/warranty">Warranty</a></li>
                             </ul>
                         </div>
@@ -276,7 +285,7 @@
     <script src="js/main.js"></script>
     <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
         <script>
-          var wa_btnSetting = {"btnColor":"#1291A8","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"260765003880","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
+          var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"260765003880","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
           window.onload = () => {
             _waEmbed(wa_btnSetting);
           };

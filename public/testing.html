@@ -3,43 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Haven Blinds - Interior Decoration With Precision">
-    <title>Product Page</title>
-    
-    <!-- Google Fonts -->
+    <title>Haven Blinds - Enhanced Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/testing.css">
-    <link rel="icon" type="image/png" href="assets/Tab-icon.png">
-    <!-- Line Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1291A8;
+            --secondary-color: #1e293b;
+            --white: #ffffff;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--white);
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            transition: height 0.3s ease;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Main Navigation */
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .main-nav a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Desktop Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            min-width: 250px;
+            margin-top: 10px;
+        }
+
+        .dropdown:hover > .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: 10px;
+            align-items: flex-start;
+        }
+
+        .dropdown-menu li {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-menu a {
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(18, 145, 168, 0.1);
+            color: var(--primary-color);
+            padding-left: 20px;
+        }
+
+        /* Nested Dropdown */
+        .dropdown-menu-1 {
+            position: absolute;
+            left: calc(100% + 5px);
+            top: 0;
+            background: white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .dropdown-menu li:hover > .dropdown-menu-1 {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .dropdown-menu-1 ul {
+            padding: 10px;
+            align-items: flex-start;
+        }
+
+        .dropdown-menu-1 li {
+            width: 100%;
+        }
+
+        .dropdown-menu-1 a {
+            padding: 10px 15px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .fa-chevron-down {
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover > a .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        .fa-caret-right {
+            font-size: 10px;
+        }
+
+        /* Demo Content */
+        .demo-content {
+            padding: 100px 20px;
+            text-align: center;
+            background: #f8f9fa;
+        }
+
+        .demo-content h1 {
+            font-size: 48px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            font-size: 18px;
+            color: #64748b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 40px;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+
+            .main-nav ul {
+                gap: 20px;
+            }
+
+            .main-nav a {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 30px;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 320px;
+                height: 100vh;
+                background: white;
+                padding: 80px 0 20px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                z-index: 999;
+                overflow-y: auto;
+            }
+
+            .main-nav.active {
+                right: 0;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0;
+                align-items: stretch;
+                padding: 0 20px;
+            }
+
+            .main-nav > ul > li {
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .main-nav > ul > li > a {
+                padding: 15px 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            /* Mobile Dropdown Styles */
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border-radius: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                margin-top: 0;
+                background: #f8f9fa;
+            }
+
+            .dropdown.active > .dropdown-menu {
+                max-height: 600px;
+            }
+
+            .dropdown-menu ul {
+                padding: 5px 0;
+            }
+
+            .dropdown-menu li {
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .dropdown-menu li:last-child {
+                border-bottom: none;
+            }
+
+            .dropdown-menu a {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+
+            .dropdown-menu a:hover {
+                background: transparent;
+                padding-left: 30px;
+            }
+
+            /* Nested Mobile Dropdown */
+            .dropdown-menu-1 {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border-radius: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                margin-left: 0;
+                background: white;
+            }
+
+            .dropdown-menu li.active > .dropdown-menu-1 {
+                max-height: 300px;
+            }
+
+            .dropdown-menu-1 ul {
+                padding: 0;
+            }
+
+            .dropdown-menu-1 a {
+                padding: 10px 40px;
+                font-size: 13px;
+            }
+
+            .fa-chevron-down,
+            .fa-caret-right {
+                transition: transform 0.3s ease;
+            }
+
+            .dropdown.active > a .fa-chevron-down {
+                transform: rotate(180deg);
+            }
+
+            .dropdown-menu li.active > a .fa-caret-right {
+                transform: rotate(90deg);
+            }
+
+            /* Mobile Menu Overlay */
+            .mobile-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 998;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+            }
+
+            .mobile-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .main-nav {
+                width: 85%;
+            }
+        }
+    </style>
+</head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> Phone: 
-                    <a href="tel:+260765003880">+260 765003880</a> |
-                    <a href="tel:+260764676969">+260 764676969</a>
-                </span>
-                <span><i class="fas fa-envelope"></i> Email: <a href="mailto:havenblindszambia@gmail.com">havenblindszambia@gmail.com</a></span>
-            </div>
-            <div class="social-links">
-                <a href="https://web.facebook.com/Havenblinds" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            </div>
-        </div>
-    </div>
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <!-- Header -->
     <header class="header">
@@ -49,27 +423,31 @@
                     <img src="assets/Logo_transparent.png" alt="Haven Blinds Logo">
                 </a>
             </div>
-            <button class="mobile-menu-btn">
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <nav class="main-nav">
+
+            <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="/about us">About us</a></li>
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/about-us">About us</a></li>
                     <li class="dropdown">
-                        <a href="#">Products <i class="fas fa-chevron-down"></i></a>
-                        
+                        <a href="#">
+                            Products <i class="fas fa-chevron-down"></i>
+                        </a>
                         <div class="dropdown-menu">
                             <ul>
-                                <li><a href="/Aluminium Venetian Blinds">Aluminium Venetian Blinds</a></li>
-                                <li><a href="/Wooden Venetian Blinds">Wooden Venetian Blinds</a></li>
-                                <li><a href="/Vertical Blinds">Vertical Blinds</a></li>
-                                <li><a href="/Roller Blinds">Roller Blinds</a></li>
-                                <li>
-                                    <a href="#">Branding <i class="fas fa-caret-right"></i></a>
-                                    
+                                <li><a href="/aluminium-venetian-blinds.html">Aluminium Venetian Blinds</a></li>
+                                <li><a href="/wooden-venetian-blinds">Wooden Venetian Blinds</a></li>
+                                <li><a href="/vertical-blinds">Vertical Blinds</a></li>
+                                <li><a href="/roller-blinds">Roller Blinds</a></li>
+                                <li class="dropdown">
+                                    <a href="#">
+                                        Branding <i class="fas fa-caret-right"></i>
+                                    </a>
                                     <div class="dropdown-menu-1">
                                         <ul>
                                             <li><a href="/frosting">Frosting</a></li>
@@ -83,263 +461,111 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                        <a href="#">
+                            Services <i class="fas fa-chevron-down"></i>
+                        </a>
                         <div class="dropdown-menu">
                             <ul>
-                                <li><a href="/servicing of blinds">Servicing of Blinds</a></li>
-                                <li><a href="/cleaning of blinds">Cleaning of Blinds</a></li>
+                                <li><a href="/servicing-of-blinds">Servicing of Blinds</a></li>
+                                <li><a href="/cleaning-of-blinds">Cleaning of Blinds</a></li>
                                 <li><a href="/warranty">Warranty</a></li>
                             </ul>
                         </div>
                     </li>
                     <li><a href="/FAQ">FAQ</a></li>
-                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/projects">Gallery</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-<!-- Page title --------------------------------------------------------------------------------------->
 
-<section class="page-title">
-    <div class="page-title-bg"></div>
-    <div class="title-container">
-        <div class="title-content">
-            <h1>Vertical Blinds</h1>
-            <div class="breadcrumb">
-                <a href="/">Home</a>
-                <span class="separator"><i class="las la-angle-right"></i></span>
-                <a href="/">Products</a>
-                <span class="separator"><i class="las la-angle-right"></i></span>
-                <span class="current-page">Vertical Blinds</span>
-            </div>
-        </div>
+    <!-- Demo Content -->
+    <div class="demo-content">
+        <h1>Enhanced Navigation</h1>
+        <p>Smooth mobile menu with nested dropdowns - Inspired by ABM Construction</p>
     </div>
-</section>
 
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const dropdowns = document.querySelectorAll('.dropdown');
 
-<!--Product Section -->
-<section class="product-section">
-        <div class="container">
-            <h1 class="product-title">ALUMINIUM <span class="highlight">VENETIAN BLINDS</span></h1>
+        // Toggle mobile menu
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking overlay
+        mobileOverlay.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            mainNav.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
             
-            <div class="product-content">
-                <!-- Left Content Box -->
-                <div class="content-box">
-                    <p class="intro-text">
-                        The <strong>ALUMINIUM VENETIAN BLIND</strong> remains one of the most popular blinds in South Africa.
-                    </p>
-                    
-                    <ul class="features-list">
-                        <li>Available in 25mm and 50mm slats.</li>
-                        <li>A large range of colours and slat finishes are available, including MATT, GLOSS, WOODGRAIN, BRUSHED and PRINTED.</li>
-                        <li>50mm blinds are available with the option of a 10mm or 25mm LADDER TAPE, instead of the traditional LADDER STRING.</li>
-                        <li>Gives effective sun and light control, at a very affordable price.</li>
-                        <li>Blinds with wire side guides are available, in order to secure the blind in the case of installing onto doors or slopes.</li>
-                        <li>Hold down brackets are not provided as standard but can be added at an additional cost.</li>
-                        <li>50mm blinds can be <span class="motorised">MOTORISED</span>, using a motor to control tilt and lift functionality.</li>
-                    </ul>
-                </div>
-
-                <!-- Right Visual Section -->
-                <div class="visual-section">
-                    <div class="main-image-container">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=380&q=80" alt="Aluminium Venetian Blinds Main" class="main-image" id="mainImage">
-                    </div>
-
-                    <!-- Thumbnail Grid -->
-                    <div class="thumbnail-grid">
-                        <div class="thumbnail-container active" data-image="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=380&q=80">
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=70&q=80" alt="Venetian Blinds View 1" class="thumbnail-image">
-                        </div>
-                        <div class="thumbnail-container" data-image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=380&q=80">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=70&q=80" alt="Venetian Blinds View 2" class="thumbnail-image">
-                        </div>
-                        <div class="thumbnail-container" data-image="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=380&q=80">
-                            <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=70&q=80" alt="Venetian Blinds View 3" class="thumbnail-image">
-                        </div>
-                        <div class="thumbnail-container" data-image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=380&q=80">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=70&q=80" alt="Venetian Blinds View 4" class="thumbnail-image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bottom Section -->
-    <section class="bottom-section">
-        <div class="container">
-            <div class="bottom-content">
-                <!-- Left CTA Box -->
-                <div class="cta-box">
-                    <p class="cta-text">Not sure which blind is the right one for your home?</p>
-                    <p class="cta-text">Why not <a href="#" class="contact-link">CONTACT US</a> and get the best advice possible, or browse through some of our best selling blinds and be inspired.</p>
-                    
-                    <p class="warranty-info">More information on our <a href="#" class="warranty-link">WARRANTY</a>.</p>
-                    
-                    <button class="view-colors-btn">VIEW AVAILABLE COLOURS</button>
-                </div>
-
-                <!-- Right Specification Box -->
-                <div class="spec-box">
-                    <h2 class="spec-title">Specification and Downloads</h2>
-                    
-                    <p class="spec-text">
-                        Supply of Ventolite's <strong>ALUMINIUM VENETIAN BLINDS</strong> with (25mm or 50mm) aluminium slats, in your colour choice, inclusive of all components and operating systems.
-                    </p>
-                    
-                    <ul class="spec-list">
-                        <li>Number of blinds, widths, heights and type of fixing required for accurate pricing.</li>
-                        <li>Specify whether manual or motorised operation required, motorised only in 50mm slats.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-<!-- Footer Section -->
-    <footer class="footer--main">
-        <div class="footer--container">
-            <div class="footer--content">
-                <!-- About Us Column -->
-                <div class="footer--column">
-                    <h3>ABOUT US</h3>
-                    <div class="footer--underline"></div>
-                    <p>We are an award winning plumbing company with over 20 years experience in the business. We provide a wide range of services for both residential and commercial clients.</p>
-                    <div class="footer--social-icons">
-                        <a href="https://web.facebook.com/Havenblinds" class="footer--social-icon footer--facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-    
-                <!-- Contact Us Column -->
-                <div class="footer--column">
-                    <h3>CONTACT US</h3>
-                    <div class="footer--underline"></div>
-                    <ul class="footer--contact-info">
-                        <li>
-                            <div class="footer--icon"><i class="fas fa-mobile-alt"></i></div>
-                            <div class="footer--info">+260 765003880</div>
-                        </li>
-                        <li>
-                            <div class="footer--icon"><i class="fas fa-mobile-alt"></i></div>
-                            <div class="footer--info">+260 764676969</div>
-                        </li>
-                        <li>
-                            <div class="footer--icon"><i class="fas fa-envelope"></i></div>
-                            <div class="footer--info">havenblinds­zambia@gmail.com</div>
-                        </li>
-                        <li>
-                            <div class="footer--icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="footer--info">Plot 27/24 Manchinchi Road<br>Northmead next to Coptic Hospital</div>
-                        </li>
-                    </ul>
-                </div>
-    
-                <!-- Quick Links Column -->
-                <div class="footer--column">
-                    <h3>QUICK LINKS</h3>
-                    <div class="footer--underline"></div>
-                    <ul class="footer--quick-links">
-                        <li><a href="#">About <i class="fas fa-chevron-right"></i></a></li>
-                        <li><a href="#">Contact <i class="fas fa-chevron-right"></i></a></li>
-                        <li><a href="#">News List <i class="fas fa-chevron-right"></i></a></li>
-                        <li><a href="#">Services <i class="fas fa-chevron-right"></i></a></li>
-                    </ul>
-                </div>
-    
-                <!-- Opening Hours Column -->
-                <div class="footer--column">
-                    <h3>OPENING HOURS</h3>
-                    <div class="footer--underline"></div>
-                    <ul class="footer--opening-hours">
-                        <li>
-                            <div class="footer--day-time">
-                                <div class="footer--icon"><i class="far fa-clock"></i></div>
-                                <div class="footer--time-info">
-                                    <div class="footer--day">Monday - Friday</div>
-                                    <div class="footer--hours">8:00 AM - 5:00 PM</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="footer--day-time">
-                                <div class="footer--icon"><i class="far fa-clock"></i></div>
-                                <div class="footer--time-info">
-                                    <div class="footer--day">Saturday</div>
-                                    <div class="footer--hours">9:00 AM - 4:00 PM</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="footer--day-time">
-                                <div class="footer--icon"><i class="far fa-clock"></i></div>
-                                <div class="footer--time-info">
-                                    <div class="footer--day">Sunday</div>
-                                    <div class="footer--hours">CLOSED</div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer--bottom">
-            <div class="footer--container">
-                <p>Copyright ©, 2025 Haven Blinds Zambia All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-<!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/main.js"></script>
-    <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
-        <script>
-          var wa_btnSetting = {"btnColor":"#1291A8","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"260765003880","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
-          window.onload = () => {
-            _waEmbed(wa_btnSetting);
-          };
-        </script>
-
-        <script>
-        // Handle thumbnail clicks
-        const thumbnails = document.querySelectorAll('.thumbnail-container');
-        const mainImage = document.getElementById('mainImage');
-        
-        thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', () => {
-                // Remove active class from all thumbnails
-                thumbnails.forEach(t => t.classList.remove('active'));
-                
-                // Add active class to clicked thumbnail
-                thumbnail.classList.add('active');
-                
-                // Update main image
-                const newImageSrc = thumbnail.dataset.image;
-                mainImage.src = newImageSrc;
+            // Close all dropdowns
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
             });
         });
 
-        // Handle view colors button
-        document.querySelector('.view-colors-btn').addEventListener('click', () => {
-            alert('Color palette would open here - this would typically link to a color selection page or modal.');
+        // Handle dropdowns
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector(':scope > a');
+            
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    
+                    // Check if this is a nested dropdown
+                    const isNested = dropdown.closest('.dropdown-menu') !== null;
+                    
+                    if (isNested) {
+                        // For nested dropdowns, just toggle current
+                        dropdown.classList.toggle('active');
+                    } else {
+                        // For top-level dropdowns, close siblings
+                        const siblings = Array.from(dropdown.parentElement.children);
+                        siblings.forEach(sibling => {
+                            if (sibling !== dropdown && sibling.classList.contains('dropdown')) {
+                                sibling.classList.remove('active');
+                                // Also close nested dropdowns
+                                const nestedDropdowns = sibling.querySelectorAll('.dropdown');
+                                nestedDropdowns.forEach(nested => nested.classList.remove('active'));
+                            }
+                        });
+                        dropdown.classList.toggle('active');
+                    }
+                }
+            });
         });
 
-        // Handle contact links
-        document.querySelector('.contact-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Contact form would open here - this would typically open a contact modal or navigate to a contact page.');
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                // Close all mobile dropdowns
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
         });
 
-        document.querySelector('.warranty-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Warranty information would open here - this would typically link to a warranty details page.');
-        });
+        // Prevent body scroll when menu is open
+        let lastScrollY = 0;
+        mainNav.addEventListener('touchmove', (e) => {
+            if (mainNav.classList.contains('active')) {
+                e.stopPropagation();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
