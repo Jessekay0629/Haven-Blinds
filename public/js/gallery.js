@@ -246,18 +246,6 @@ const projects = [
         category: "alum",
         image: "./assets/Portfolio/44.jpg"
     },
-    {
-        id: 9,
-        title: "Aluminium venetian Blinds",
-        category: "alum",
-        image: "./assets/Portfolio/45.jpeg"
-    },
-    {
-        id: 9,
-        title: "Aluminium venetian Blinds",
-        category: "alum",
-        image: "./assets/Portfolio/46.jpeg"
-    },
 ];
 
 let displayedProjects = 6;
