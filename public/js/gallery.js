@@ -40,13 +40,25 @@ const projects = [
         id: 7,
         title: "Roller Blinds",
         category: "roller",
-        image: "./assets/Portfolio/7.jpeg"
+        image: "./assets/Portfolio/7.jpg"
     },
     {
         id: 8,
         title: "Roller Blinds",
         category: "roller",
-        image: "./assets/Portfolio/8.jpeg"
+        image: "./assets/Portfolio/8.jpg"
+    },
+    {
+        id: 9,
+        title: "Wooden venetian Blinds",
+        category: "wooden",
+        image: "./assets/Portfolio/33.jpg"
+    },
+    {
+        id: 9,
+        title: "Wooden venetian Blinds",
+        category: "wooden",
+        image: "./assets/Portfolio/34.jpg"
     },
     {
         id: 9,
@@ -80,15 +92,15 @@ const projects = [
     },
     {
         id: 9,
-        title: "Aluminium venetian Blinds",
-        category: "alum",
-        image: "./assets/Portfolio/17.jpeg"
-    },
-    {
-        id: 9,
         title: "Roller Blinds",
         category: "roller",
         image: "./assets/Portfolio/18.jpeg"
+    },
+    {
+        id: 9,
+        title: "Aluminium venetian Blinds",
+        category: "alum",
+        image: "./assets/Portfolio/17.jpeg"
     },
     {
         id: 9,
@@ -124,13 +136,25 @@ const projects = [
         id: 9,
         title: "Vertical Blinds",
         category: "vertical",
-        image: "./assets/Portfolio/24.jpeg"
+        image: "./assets/Portfolio/24.jpg"
     },
     {
         id: 9,
         title: "Vertical Blinds",
         category: "vertical",
-        image: "./assets/Portfolio/26.jpeg"
+        image: "./assets/Portfolio/25.jpg"
+    },
+    {
+        id: 9,
+        title: "Vertical Blinds",
+        category: "vertical",
+        image: "./assets/Portfolio/26.jpg"
+    },
+    {
+        id: 9,
+        title: "Vertical Blinds",
+        category: "vertical",
+        image: "./assets/Portfolio/35.jpg"
     },
     {
         id: 9,
@@ -168,6 +192,72 @@ const projects = [
         category: "wooden",
         image: "./assets/Portfolio/32.jpeg"
     },
+    {
+        id: 9,
+        title: "Aluminium venetian Blinds",
+        category: "alum",
+        image: "./assets/Portfolio/36.jpg"
+    },
+    {
+        id: 9,
+        title: "Aluminium venetian Blinds",
+        category: "alum",
+        image: "./assets/Portfolio/37.jpg"
+    },
+    {
+        id: 9,
+        title: "Aluminium venetian Blinds",
+        category: "alum",
+        image: "./assets/Portfolio/38.jpg"
+    },
+    {
+        id: 9,
+        title: "Wooden venetian Blinds",
+        category: "wooden",
+        image: "./assets/Portfolio/39.jpg"
+    },
+    {
+        id: 9,
+        title: "Wooden venetian Blinds",
+        category: "wooden",
+        image: "./assets/Portfolio/40.jpg"
+    },
+    {
+        id: 9,
+        title: "Aluminium venetian Blinds",
+        category: "alum",
+        image: "./assets/Portfolio/41.jpg"
+    },
+    {
+        id: 9,
+        title: "Wooden venetian Blinds",
+        category: "wooden",
+        image: "./assets/Portfolio/42.jpg"
+    },
+    {
+        id: 9,
+        title: "Aluminium venetian Blinds",
+        category: "alum",
+        image: "./assets/Portfolio/43.jpg"
+    },
+    {
+        id: 9,
+        title: "Aluminium venetian Blinds",
+        category: "alum",
+        image: "./assets/Portfolio/44.jpg"
+    },
+    {
+        id: 9,
+        title: "Aluminium venetian Blinds",
+        category: "alum",
+        image: "./assets/Portfolio/45.jpeg"
+    },
+    {
+        id: 9,
+        title: "Aluminium venetian Blinds",
+        category: "alum",
+        image: "./assets/Portfolio/46.jpeg"
+    },
 ];
 
 let displayedProjects = 6;
@@ -186,12 +276,12 @@ function createGalleryItem(project) {
 
 function renderGallery() {
     const gallery = document.getElementById('gallery');
-    const filteredProjects = currentFilter === 'all' 
+    const filteredProjects = currentFilter === 'all'
         ? projects.slice(0, displayedProjects)
         : projects.filter(p => p.category === currentFilter).slice(0, displayedProjects);
-    
+
     gallery.innerHTML = filteredProjects.map(createGalleryItem).join('');
-    
+
     // Update load more button visibility
     const loadMoreBtn = document.getElementById('loadMore');
     const totalFiltered = currentFilter === 'all' ? projects.length : projects.filter(p => p.category === currentFilter).length;
@@ -201,17 +291,17 @@ function renderGallery() {
 function filterProjects(category) {
     currentFilter = category;
     displayedProjects = 6;
-    
+
     // Update active filter button
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     document.querySelector(`[data-filter="${category}"]`).classList.add('active');
-    
+
     // Add animation delay for smooth transition
     const items = document.querySelectorAll('.gallery-item');
     items.forEach(item => item.classList.add('hidden'));
-    
+
     setTimeout(() => {
         renderGallery();
     }, 300);
