@@ -50,18 +50,6 @@ const projects = [
     },
     {
         id: 9,
-        title: "Wooden venetian Blinds",
-        category: "wooden",
-        image: "./assets/Portfolio/33.jpg"
-    },
-    {
-        id: 9,
-        title: "Wooden venetian Blinds",
-        category: "wooden",
-        image: "./assets/Portfolio/34.jpg"
-    },
-    {
-        id: 9,
         title: "Roller Blinds",
         category: "roller",
         image: "./assets/Portfolio/9.jpeg"
